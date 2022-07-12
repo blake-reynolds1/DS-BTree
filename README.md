@@ -46,5 +46,17 @@
   - Note: in many implementations, only leaf nodes hold the data (less heavy operations on splitting, etc)
 * A B-tree of order 5
   - <img width="660" alt="Screen Shot 2022-07-12 at 4 06 40 PM" src="https://user-images.githubusercontent.com/89602311/178595361-db98fdae-56c7-46ee-965b-d70c8e37303a.png">
+* Another B-tree of order 5
+  - Each node represents a disk block, we choose M on the basis of the size of the items that are being stores.
+  - <img width="495" alt="Screen Shot 2022-07-12 at 5 04 42 PM" src="https://user-images.githubusercontent.com/89602311/178603448-e554d15a-add0-4524-8201-b7ce921858db.png">
+* Assume the size of a block in the disk is 8192 bytes (8 KB)
+* How to decide M?
+  - Greedy: as large as possible -> height will be as small as possible
+  - For internal nodes: store M-1 keys,
+  - If each key is big int (32 bytes)
+    - 32M - 32 <= 8192 -> M = 228
+  - If we customized data type, e.g. its size is 256 byts
+    - 265M <= 8192 -> M = 228
+  - Note: in many implementation, the number of data nodes in each leaf block could be different from M, i.e., L data items for a leaf block and L != M, to get better use of internal nodes.
 
   
